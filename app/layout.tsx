@@ -6,7 +6,7 @@ const inter = Inter({subsets: ["latin"]});
 
 export const metadata: Metadata = {
   title: "Prostore",
-  description: "Prostore is a simple e-commerce platform buitl with Nextjs & Prisma.",
+  description: "Prostore is a simple e-commerce platform built with Nextjs & Prisma.",
 };
 
 export default function RootLayout({
