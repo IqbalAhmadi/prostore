@@ -9,8 +9,8 @@ function isRedirectError(error: unknown): boolean {
   return typeof error === 'object' && error !== null && 'url' in error;
 }
 
-// Sign in thr user with the provided credentials
-export async function sigInWithCredentials(
+// Sign in the user with the provided credentials
+export async function signInWithCredentials(
   prevState: unknown,
   formData: FormData
 ) {
