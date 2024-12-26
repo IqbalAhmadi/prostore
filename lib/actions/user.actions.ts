@@ -4,6 +4,7 @@ import { signInFormSchema, signUpFormSchema } from '../validators'
 import { signIn, signOut } from '@/auth'
 import { hashSync } from 'bcrypt-ts-edge'
 import { prisma } from '@/db/prisma'
+import { formatError } from '../utils'
 // import {isRedirectError} from 'next/dist/client/components/redirect'
 
 // Custom implementation of isRedirectError
@@ -68,11 +69,12 @@ export async function signUpUser(prevState: unknown, formData: FormData) {
 
     return { success: true, message: 'Signed up successfully' }
   } catch (error) {
+
     if (isRedirectError(error)) {
       // console.log(error)
       throw error
     }
-    return { success: false, message: 'User was not registered' }
+    return { success: false, message: formatError(error) }
 
   }
 }
