@@ -11,6 +11,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { auth } from '@/auth'
 import {redirect} from 'next/navigation'
+import SignUpForm from './sign-up-form'
 
 export const metadata: Metadata = {
   title: 'Sign Up',
@@ -48,7 +49,7 @@ const SignUpPage = async (props: {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
-            Form
+            <SignUpForm />
         </CardContent>
       </Card>
     </div>
