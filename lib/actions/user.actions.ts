@@ -10,12 +10,7 @@ import { hashSync } from 'bcrypt-ts-edge'
 import { prisma } from '@/db/prisma'
 import { formatError } from '../utils'
 import { ShippingAddress } from '@/types'
-import { isRedirectError } from 'next/dist/client/components/redirect'
-
-// Custom implementation of isRedirectError
-function isRedirectError(error: unknown): boolean {
-  return typeof error === 'object' && error !== null && 'url' in error
-}
+import { isRedirectError } from "next/dist/client/components/redirect-error"
 
 // Sign in the user with the provided credentials
 export async function signInWithCredentials(
