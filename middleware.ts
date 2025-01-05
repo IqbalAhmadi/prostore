@@ -1,30 +1,32 @@
-// export { auth as middleware } from '@/auth';
+export { auth as middleware } from '@/auth';
 
-// middleware.ts
-import { NextRequest, NextResponse } from 'next/server';
 
-// Define routes that require authentication
-const protectedRoutes = ['/cart', '/shipping-address', '/sign-in', '/sign-up', '/product/*'];
+//! If below is implemented, Vecel will not have an issue with the middleware. Otherwise, it will throw an error. Brad's is using only above code. 
+// // middleware.ts
+// import { NextRequest, NextResponse } from 'next/server';
 
-export function middleware(req: NextRequest) {
-  const { pathname } = req.nextUrl;
+// // Define routes that require authentication
+// const protectedRoutes = ['/cart', '/shipping-address', '/sign-in', '/sign-up', '/product/*'];
 
-  // Skip middleware for public routes
-  if (protectedRoutes.some(route => pathname.startsWith(route))) {
-    const token = req.cookies.get('next-auth.session-token')?.value || 
-                  req.cookies.get('__Secure-next-auth.session-token')?.value;
+// export function middleware(req: NextRequest) {
+//   const { pathname } = req.nextUrl;
 
-    if (!token) {
-      // Redirect to sign-in page if no token is found
-      return NextResponse.redirect(new URL('/sign-in', req.url));
-    }
-  }
+//   // Skip middleware for public routes
+//   if (protectedRoutes.some(route => pathname.startsWith(route))) {
+//     const token = req.cookies.get('next-auth.session-token')?.value || 
+//                   req.cookies.get('__Secure-next-auth.session-token')?.value;
 
-  return NextResponse.next();
-}
+//     if (!token) {
+//       // Redirect to sign-in page if no token is found
+//       return NextResponse.redirect(new URL('/sign-in', req.url));
+//     }
+//   }
 
-// Specify the paths where the middleware should run
-export const config = {
-  matcher: ['/cart/:path*', '/shipping-address/:path*', '/product/:path*'],
-};
+//   return NextResponse.next();
+// }
+
+// // Specify the paths where the middleware should run
+// export const config = {
+//   matcher: ['/cart/:path*', '/shipping-address/:path*', '/product/:path*'],
+// };
 
