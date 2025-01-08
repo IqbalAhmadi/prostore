@@ -37,8 +37,8 @@ model User {
   paymentMethod String?
   createdAt     DateTime  @default(now()) @db.Timestamp(6)
   updatedAt     DateTime  @updatedAt
-  accounts      Account[]
-  Session       Session[]
+  account       Account[]
+  session       Session[]
   Cart          Cart[]
 }
 
