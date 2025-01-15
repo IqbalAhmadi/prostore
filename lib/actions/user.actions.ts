@@ -30,7 +30,6 @@ export async function signInWithCredentials(
     return { success: true, message: 'Signed in successfully' }
   } catch (error) {
     if (isRedirectError(error)) {
-      // console.log(error)
       throw error
     }
     return { success: false, message: 'Invalid email or password' }

@@ -1,5 +1,5 @@
 import NextAuth from 'next-auth'
-import { PrismaAdapter } from '@next-auth/prisma-adapter'
+import { PrismaAdapter } from '@auth/prisma-adapter'
 import { prisma } from '@/db/prisma'
 import CredentialsProvider from 'next-auth/providers/credentials'
 import { compareSync } from 'bcrypt-ts-edge'
@@ -101,13 +101,13 @@ export const config = {
         /\/user\/(.*)/,
         /\/order\/(.*)/,
         /\/admin/,
-      ];
+      ]
 
       // Get pathname from the req URL object
-      const { pathname } = request.nextUrl;
+      const { pathname } = request.nextUrl
 
       // Check if user is not authenticated and accessing a protected path
-      if (!auth && protectedPaths.some((p) => p.test(pathname))) return false;
+      if (!auth && protectedPaths.some((p) => p.test(pathname))) return false
 
       // Check for session cart cookie
       if (!request.cookies.get('sessionCartId')) {

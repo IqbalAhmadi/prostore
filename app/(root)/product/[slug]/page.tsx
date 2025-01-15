@@ -15,7 +15,7 @@ const ProductDetailsPage = async (props: {
   const product = await getProductBySlug(slug)
   if (!product) notFound()
 
-    const cart = await getMyCart()
+  const cart = await getMyCart()
 
   return (
     <>
@@ -58,26 +58,27 @@ const ProductDetailsPage = async (props: {
                   </div>
                 </div>
                 <div className="mb-2 flex justify-between">
-                    <div>Status</div>
-                    {product.stock > 0 ? (
-                        <Badge variant="outline">In Stock</Badge>
-                    ) : (
-                        <Badge variant="destructive">Out Of Stock</Badge>
-                    )}
+                  <div>Status</div>
+                  {product.stock > 0 ? (
+                    <Badge variant="outline">In Stock</Badge>
+                  ) : (
+                    <Badge variant="destructive">Out Of Stock</Badge>
+                  )}
                 </div>
                 {product.stock > 0 && (
-                    <div className="flex-center">
-                        <AddToCart
-                        cart={cart}
-                         item={{
-                          productId: product.id,
-                          name: product.name,
-                          slug: product.slug,
-                          price: product.price,
-                          qty: 1,
-                          image: product.images![0]
-                        }} />
-                    </div>
+                  <div className="flex-center">
+                    <AddToCart
+                      cart={cart}
+                      item={{
+                        productId: product.id,
+                        name: product.name,
+                        slug: product.slug,
+                        price: product.price,
+                        qty: 1,
+                        image: product.images![0],
+                      }}
+                    />
+                  </div>
                 )}
               </CardContent>
             </Card>
